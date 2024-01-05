@@ -1,0 +1,63 @@
+
+
+.login-container{
+    height: 100vh;
+    background-color: var(--bg-color)
+}
+
+.login-logo {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 150px;
+}
+
+.login_img{
+    display: flex;
+    justify-content: center;
+}
+
+.login_title_container {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 25px;
+    font-weight: 600;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal
+}
+
+.login_btn_container{
+    color: black;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 0 0;
+    cursor: pointer;
+}
+
+.login_btn {
+    background-color: #02ccc0;
+    width: 140px;
+    height: 35px;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    font-weight: 800;
+
+}
+
+.forget_pass {
+    margin: 15px 0 0 0;
+    cursor: pointer;
+}
+

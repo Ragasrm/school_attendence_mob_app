@@ -1,0 +1,12 @@
+:root {
+    --bg-color: #ffffff;
+    --lightblue:#50C0FF;
+    --white: #fff;
+    --active:#404040;
+    --logo:rgb(141, 136, 136);
+    --text-color: #000000
+  }
+
+.body{
+    background-color: #fff;
+}
