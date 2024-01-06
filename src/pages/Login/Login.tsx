@@ -26,6 +26,7 @@ const Login: React.FC = () => {
   const handleSumbit = () => {
     if (!firstName && !password) {
       setisOpen(true);
+      return;
     }
 
     const body = {
@@ -73,8 +74,9 @@ const Login: React.FC = () => {
       </div>
       <IonAlert
         isOpen={isOpen}
-        message="User Name and passowrd is must"
+        message="Please Enter user name and password"
         buttons={["Action"]}
+        onDidDismiss={() => setisOpen(false)}
       ></IonAlert>
     </div>
   );
