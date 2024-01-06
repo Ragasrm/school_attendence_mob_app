@@ -1,9 +1,9 @@
-import React from 'react'
+import "./Dashboard.css"
 
 type Props = {}
 
 export default function Dashboard({}: Props) {
   return (
-    <div>Dashboard</div>
+    <div className="dashboard-container">Dashboard</div>
   )
 }
