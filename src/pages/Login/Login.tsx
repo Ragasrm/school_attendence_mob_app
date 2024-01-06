@@ -1,5 +1,9 @@
 import { useState } from "react";
+
 import { IonAlert } from "@ionic/react";
+
+import { useHistory } from 'react-router-dom';
+
 import Input from "../../components/Input/Input";
 import LockIcon from "../../utils/LockIcon";
 import UserIcon from "../../utils/UserIcon";
@@ -9,6 +13,10 @@ import Logo from "../../utils/Logo";
 import "./Login.css";
 
 const Login: React.FC = () => {
+
+  // hooks
+  const history = useHistory();
+  // states
   const [firstName, setfirstName] = useState("");
   const [password, setpassword] = useState("");
   const [isOpen, setisOpen] = useState(false);
@@ -34,9 +42,13 @@ const Login: React.FC = () => {
       password: password,
     };
 
+    /** 
+    * TODO:  make api call for login and handle response and error
+    */
     console.log("submitted data", body);
     setfirstName("");
     setpassword("");
+    history.push("/dashboard");
   };
 
   return (
