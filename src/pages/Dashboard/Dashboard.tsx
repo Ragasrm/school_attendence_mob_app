@@ -1,5 +1,4 @@
 import Attendence from "../../utils/Attendence"
-import Dummy from "../../utils/dummy"
 import Profile from "../../utils/Profile"
 import Report from "../../utils/Report"
 import Students from "../../utils/Students"
