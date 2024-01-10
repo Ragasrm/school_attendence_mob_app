@@ -64,7 +64,11 @@ const Login: React.FC = () => {
         <div>School</div>
       </div>
       <div style={{ margin: "0 15px" }}>
-        <Input title="User Name" value={firstName} handleChange={handleChange}>
+        <Input 
+          title="User Name" 
+          value={firstName} 
+          handleChange={handleChange}
+        >
           <UserIcon />
         </Input>
         <Input
