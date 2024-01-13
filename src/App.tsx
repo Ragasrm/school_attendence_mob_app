@@ -1,5 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, useIonRouter, setupIonicReact } from '@ionic/react';
+import { App as Application } from '@capacitor/app';
+
 // import Home from './pages/Home';
 import Login from './pages/Login/Login';
 // import Login from './pages/newLogin/Login1';
@@ -29,6 +31,16 @@ import Report from './pages/Report/Report'
 
 
 setupIonicReact();
+
+// const ionRouter = useIonRouter();
+document.addEventListener('ionBackButton', (ev:any) => {
+  ev.detail.register(-1, () => {
+    console.log('Handler was called!');
+    // if (!ionRouter.canGoBack()) {
+    //   Application.exitApp();
+    // }
+  });
+});
 
 const App: React.FC = () => (
   <IonApp>
