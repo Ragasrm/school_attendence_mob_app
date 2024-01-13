@@ -35,7 +35,7 @@ const Login: React.FC = () => {
 
   const handleSumbit = () => {
     present({
-      message: 'Verifying Accont'
+      message: 'Verifying user...!'
     });
     console.log("firstName", firstName)
     console.log("password", password)

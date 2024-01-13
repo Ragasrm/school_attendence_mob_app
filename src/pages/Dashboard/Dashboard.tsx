@@ -1,3 +1,4 @@
+import { useIonLoading } from "@ionic/react"
 import Attendence from "../../utils/Attendence"
 import Profile from "../../utils/Profile"
 import Report from "../../utils/Report"
@@ -7,6 +8,7 @@ import "./Dashboard.css"
 
 
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react"
 
 type Props = {}
 
@@ -14,10 +16,29 @@ export default function Dashboard({}: Props) {
 
     // hooks
     const history = useHistory();
+    // const [present, dismiss] = useIonLoading();
+
+    // useEffect(() => {
+    //   present({
+    //     message: 'Loading Dashboard..!'
+    //   });
+
+    //   setTimeout(() => {
+    //     dismiss()
+    //   }, 3000);
+    
+
+    // }, [])
+    
 
   const handleFeatureClick = (params:string) => {
 
-    history.push(`/${params}`)
+    if(params === "report") {
+      history.push(`/${params}`)
+    } else {
+      alert(params)
+    }
+
   }
 
   return (
