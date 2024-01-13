@@ -1,8 +1,8 @@
-import { Redirect, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
 // import Home from './pages/Home';
 import Login from './pages/Login/Login';
+// import Login from './pages/newLogin/Login1';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -26,17 +26,18 @@ import "./theme/global.css"
 import Dashboard from './pages/Dashboard/Dashboard';
 
 
+
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home"><Login /></Route>
-        <Route exact path="/"><Redirect to="/home" /></Route>
-        <Route exact path="/dashboard"><Dashboard /></Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <BrowserRouter>
+      <Switch>
+      <Route exact path="/"><Redirect to="/login" /></Route>
+        <Route exact path="/login" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
+    </BrowserRouter>
   </IonApp>
 );
 

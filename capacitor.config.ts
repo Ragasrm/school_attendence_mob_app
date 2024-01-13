@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'attendence',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
   }
 };
 

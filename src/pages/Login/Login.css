@@ -1,8 +1,8 @@
 
 
 .login-container{
-    height: 100vh;
-    background-color: var(--bg-color)
+    /* background-color: var(--bg-color); */
+    height: max-content;
 }
 
 .login-logo {
