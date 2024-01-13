@@ -5,12 +5,19 @@ import Students from "../../utils/Students"
 import Teacher from "../../utils/Teacher"
 import "./Dashboard.css"
 
+
+import { useHistory } from "react-router-dom";
+
 type Props = {}
 
 export default function Dashboard({}: Props) {
 
+    // hooks
+    const history = useHistory();
+
   const handleFeatureClick = (params:string) => {
-    alert(params)
+
+    history.push(`/${params}`)
   }
 
   return (

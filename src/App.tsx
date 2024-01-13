@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import "./theme/global.css"
 import Dashboard from './pages/Dashboard/Dashboard';
+import Report from './pages/Report/Report'
 
 
 
@@ -36,6 +37,7 @@ const App: React.FC = () => (
       <Route exact path="/"><Redirect to="/login" /></Route>
         <Route exact path="/login" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/report" component={Report} />
       </Switch>
     </BrowserRouter>
   </IonApp>
