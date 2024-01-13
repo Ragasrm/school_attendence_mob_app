@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IonAlert, IonContent, IonPage } from "@ionic/react";
+import { IonAlert, IonContent, IonPage, useIonLoading } from "@ionic/react";
 
 import { useHistory } from "react-router-dom";
 
@@ -15,6 +15,8 @@ import "./Login.css";
 const Login: React.FC = () => {
   // hooks
   const history = useHistory();
+   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   const [present, dismiss] = useIonLoading();
   // states
   const [firstName, setfirstName] = useState("");
   const [password, setpassword] = useState("");
@@ -32,6 +34,9 @@ const Login: React.FC = () => {
   };
 
   const handleSumbit = () => {
+    present({
+      message: 'Verifying Accont'
+    });
     console.log("firstName", firstName)
     console.log("password", password)
     if(firstName.length===0) {
@@ -58,10 +63,18 @@ const Login: React.FC = () => {
      * TODO:  make api call for login and handle response and error
      */
     console.log("submitted data", body);
-    setfirstName("");
-    setpassword("");
-    history.push("/dashboard");
-    console.log("Form submitted");
+   
+
+    setTimeout(() => {
+      dismiss();
+      setfirstName("");
+      setpassword("");
+      
+      history.push("/dashboard");
+      console.log("Form submitted");
+      
+    }, 5000);
+   
   };
 
   const handleModelClose = () => {

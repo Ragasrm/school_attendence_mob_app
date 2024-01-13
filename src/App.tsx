@@ -1,6 +1,8 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { IonApp, useIonRouter, setupIonicReact } from '@ionic/react';
-import { App as Application } from '@capacitor/app';
+import React, { useEffect } from "react";
+import { Plugins, Capacitor } from "@capacitor/core";
+import { useHistory } from "react-router-dom";
 
 // import Home from './pages/Home';
 import Login from './pages/Login/Login';
@@ -32,17 +34,30 @@ import Report from './pages/Report/Report'
 
 setupIonicReact();
 
-// const ionRouter = useIonRouter();
 document.addEventListener('ionBackButton', (ev:any) => {
   ev.detail.register(-1, () => {
-    console.log('Handler was called!');
-    // if (!ionRouter.canGoBack()) {
-    //   Application.exitApp();
-    // }
+   
+   
+
+    if (window.location.pathname === '/dashboard') {
+      console.log('exit');
+      let user_action = window.confirm("Are you sure to close the app")
+      console.log("user_action", user_action)
+      user_action && history.back() 
+    } else {
+      history.back()
+    }
   });
 });
 
-const App: React.FC = () => (
+const App: React.FC = () => { 
+  const history = useHistory();
+  
+  useEffect(() => {
+    console.log("Native device",Capacitor.isNativePlatform())
+  }, [])
+  
+  return(
   <IonApp>
     <BrowserRouter>
       <Switch>
@@ -53,6 +68,6 @@ const App: React.FC = () => (
       </Switch>
     </BrowserRouter>
   </IonApp>
-);
+)};
 
 export default App;
