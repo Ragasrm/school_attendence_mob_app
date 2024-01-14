@@ -2,6 +2,7 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { IonApp, setupIonicReact } from "@ionic/react";
 import React, { useEffect } from "react";
 import { Plugins, Capacitor } from "@capacitor/core";
+import { Network } from "@capacitor/network";
 
 import Login from "./pages/Login/Login";
 // import Login from './pages/newLogin/Login1';
@@ -27,6 +28,7 @@ import "./theme/variables.css";
 import "./theme/global.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Report from "./pages/Report/Report";
+import useNetworkCheckhook from "./hooks/useNetworkCheckhook";
 
 setupIonicReact();
 
@@ -62,6 +64,9 @@ function handleUserAction(message: string, callback: UserActionCallback) {
 }
 
 const App: React.FC = () => {
+  const { netWorkStatus } = useNetworkCheckhook();
+
+  console.log("netWorkStatus", netWorkStatus);
   useEffect(() => {
     console.log("Native device", Capacitor.isNativePlatform());
   }, []);

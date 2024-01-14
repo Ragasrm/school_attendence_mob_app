@@ -1,0 +1,45 @@
+ion-toolbar {
+    --background: #19422d;
+    --min-height: 120px;
+}
+
+ion-content {
+    --background:#f9f9f9;
+} 
+
+ion-col{
+    color: #000;
+}
+
+.title-align {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-position {
+    margin-top: 100px;
+}
+.row-margin {
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.left-col {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 10px 0 0;
+    color: #000;
+    /* background-color:#87cfaa; */
+}
+
+.right-col {
+    background-color: #95d7b5;
+}
+
+.btn-grid {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
