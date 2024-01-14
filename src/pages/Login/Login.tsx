@@ -5,10 +5,10 @@ import { IonAlert, IonContent, IonPage, useIonLoading } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 
 import Input from "../../components/Input/Input";
-import LockIcon from "../../utils/LockIcon";
-import UserIcon from "../../utils/UserIcon";
-import SVGComponent from "../../utils/LoginImage";
-import Logo from "../../utils/Logo";
+import LockIcon from "../../utils/Icons/LockIcon";
+import UserIcon from "../../utils/Icons/UserIcon";
+import SVGComponent from "../../utils/Icons/LoginImage";
+import Logo from "../../utils/Icons/Logo";
 
 import "./Login.css";
 
