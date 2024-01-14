@@ -23,13 +23,13 @@
 .students_count, .absentees {
     width: 90%;
     height: fit-content;
-    background-color: antiquewhite;
+    background-color: rgba(248, 212, 152, 0.71);    ;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 0 15px #00000040;
 }
 .absentees {
-    background-color: rgb(172, 235, 237);
+    background-color: rgba(240, 248, 152, 0.71);
     padding: 0 20px;
 }
 .absentees h3 {
@@ -78,4 +78,8 @@
     font-size: 16px;
     font-weight: 600;
     text-align: center;
+}
+
+.li-class{
+    margin: 0 0 10px 0;
 }

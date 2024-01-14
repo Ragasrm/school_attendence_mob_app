@@ -34,9 +34,7 @@ const Login: React.FC = () => {
   };
 
   const handleSumbit = () => {
-    present({
-      message: 'Verifying user...!'
-    });
+   
     console.log("firstName", firstName)
     console.log("password", password)
     if(firstName.length===0) {
@@ -50,6 +48,11 @@ const Login: React.FC = () => {
       setisOpen(true);
       return;
     }
+
+
+    present({
+      message: 'Verifying user...!'
+    });
 
 
     const body = {

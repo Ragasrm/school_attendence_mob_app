@@ -28,6 +28,7 @@ export default function Dashboard({}: Props) {
   };
 
   return (
+
     <div className="dashboard-container">
       <div className="dashboard_profile">
         <Profile />
@@ -58,9 +59,21 @@ export default function Dashboard({}: Props) {
       <div className="absentees">
         <h3>Long Absentees</h3>
         <ol className="absentees_list" type="1">
-          <li>Sathish kumar</li>
-          <li>Ragav</li>
-          <li>Harish</li>
+          <li className="li-class">Sathish kumar</li>
+          <li className="li-class">Ragav</li>
+          <li className="li-class">Harish</li>
+          <li className="li-class">Sathish kumar</li>
+          <li className="li-class">Ragav</li>
+          <li className="li-class">Harish</li>
+          <li className="li-class">Sathish kumar</li>
+          <li className="li-class">Ragav</li>
+          <li className="li-class">Harish</li>
+          <li className="li-class">Sathish kumar</li>
+          <li className="li-class">Ragav</li>
+          <li className="li-class">Harish</li>
+          <li className="li-class">Sathish kumar</li>
+          <li className="li-class">Ragav</li>
+          <li className="li-class">Harish</li>
         </ol>
       </div>
       <div className="feature">
