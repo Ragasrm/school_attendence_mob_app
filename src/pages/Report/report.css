@@ -1,7 +1,7 @@
-ion-toolbar {
+/* ion-toolbar {
     --background: #19422d;
     --min-height: 120px;
-}
+} */
 
 ion-content {
     --background:#f9f9f9;
@@ -11,9 +11,20 @@ ion-col{
     color: #000;
 }
 
+.tool-bar-cus-class{
+    min-height: 120px;
+    --background: rgba(2, 204, 192, 0.62);
+    display: flex;
+    
+}
+
 .title-align {
     display: flex;
     justify-content: center;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: 700;
+
 }
 
 .grid-position {

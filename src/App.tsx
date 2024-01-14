@@ -29,6 +29,7 @@ import "./theme/global.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Report from "./pages/Report/Report";
 import useNetworkCheckhook from "./hooks/useNetworkCheckhook";
+import attendence from "./pages/Attendence/attendence";
 
 setupIonicReact();
 
@@ -81,6 +82,7 @@ const App: React.FC = () => {
           <Route exact path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/report" component={Report} />
+          <Route path="/attendence" component={attendence} />
         </Switch>
       </BrowserRouter>
     </IonApp>
