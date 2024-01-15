@@ -243,3 +243,8 @@ html {
   https://ionicframework.com/docs/layout/dynamic-font-scaling */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
+
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+}

@@ -1,3 +1,29 @@
 .ion-tool-bar {
-    background-color: aqua;
+    --background: rgb(255, 255, 255);
+    color: var(--text-color);
+    min-height: 60px;
+}
+
+.row{
+    color: var(--text-color);
+
+}
+
+.scan-bg  {
+    --background: rgb(255, 255, 255);
+}
+
+.scanned-content {
+    color: var(--text-color);
+    display: flex;
+    /* background: aquamarine; */
+    /* height: 100vh; */
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 250px;
+}
+
+.hideBg::part(::backdrop){
+    display: none;
 }

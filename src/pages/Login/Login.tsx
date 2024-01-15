@@ -89,7 +89,7 @@ const Login: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent>
+      <IonContent className="ion-content">
         <div className="login-container">
           <div className="login-logo">
             <Logo />

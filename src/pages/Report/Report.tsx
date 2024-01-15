@@ -24,7 +24,7 @@ const Report = (props: Props) => {
           </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="ion-content">
         <IonGrid className="grid-position">
           <IonRow className="row-margin">
             <IonCol className="left-col" size="4">

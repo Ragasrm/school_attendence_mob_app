@@ -65,12 +65,12 @@ function handleUserAction(message: string, callback: UserActionCallback) {
 }
 
 const App: React.FC = () => {
-  const { netWorkStatus } = useNetworkCheckhook();
+  // const { netWorkStatus } = useNetworkCheckhook();
 
-  console.log("netWorkStatus", netWorkStatus);
-  useEffect(() => {
-    console.log("Native device", Capacitor.isNativePlatform());
-  }, []);
+  // console.log("netWorkStatus", netWorkStatus);
+  // useEffect(() => {
+  //   console.log("Native device", Capacitor.isNativePlatform());
+  // }, []);
 
   return (
     <IonApp>
