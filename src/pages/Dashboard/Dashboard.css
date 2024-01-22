@@ -1,3 +1,7 @@
+.dash-board {
+    background:var(--bg-color) ;
+}
+
 
 .dashboard-container {
     height: 100vh;

@@ -14,7 +14,7 @@ import {
 import { BarcodeScanner } from "@capacitor-community/barcode-scanner";
 import "./attendence.css";
 import { useEffect, useState } from "react";
-import Close from "../../utils/Icons/close";
+import Close from "../../utils/Icons/Close";
 
 type Props = {};
 
