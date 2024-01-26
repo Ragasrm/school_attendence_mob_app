@@ -11,3 +11,7 @@
     --background: transparent;
     --ion-background-color: transparent;
   }
+
+  .alert-wrapper {
+    background-color:black
+  }
