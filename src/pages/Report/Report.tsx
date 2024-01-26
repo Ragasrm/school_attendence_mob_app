@@ -12,10 +12,24 @@ import {
   IonSelectOption,
 } from "@ionic/react";
 import "./report.css";
+import { yearsData } from "../../utils/common/yearAndMonthGenerator";
+import { useState } from "react";
 
 type Props = {};
 
 const Report = (props: Props) => {
+
+  const [year, setYear] = useState(yearsData);
+  const [months, setMonths] = useState<any>([]);
+
+
+  const handleMonthFilter = (selectedYear:any) => {
+    console.log(selectedYear?.detail?.value);
+    let filteredDate = year.filter(data => data.year === selectedYear?.detail?.value);
+    console.log(filteredDate[0].months)
+    let month = [...filteredDate[0].months]
+    setMonths(month)
+  }
   return (
     <IonPage>
       {/*  either can adjust css for this IONHEADER or can use div to solve this */}
@@ -33,10 +47,15 @@ const Report = (props: Props) => {
               Year :
             </IonCol>
             <IonCol className="right-col">
-              <IonSelect fill="outline" placeholder="select year">
-                <IonSelectOption value="apple">2020</IonSelectOption>
-                <IonSelectOption value="banana">2021</IonSelectOption>
-                <IonSelectOption value="orange">2022</IonSelectOption>
+              <IonSelect fill="outline" placeholder="select year" onIonChange={(e)=>handleMonthFilter(e)}>
+                {
+                  year.map((data, index)=>(
+                    <IonSelectOption key={index} value={data.year}>{data.year}</IonSelectOption>
+                  ))
+                }
+               
+                {/* <IonSelectOption value="banana">2021</IonSelectOption>
+                <IonSelectOption value="orange">2022</IonSelectOption> */}
               </IonSelect>
             </IonCol>
           </IonRow>
@@ -46,9 +65,11 @@ const Report = (props: Props) => {
             </IonCol>
             <IonCol className="right-col">
             <IonSelect fill="outline" placeholder="select Month">
-                <IonSelectOption value="apple">Jan</IonSelectOption>
-                <IonSelectOption value="banana">Feb</IonSelectOption>
-                <IonSelectOption value="orange">March</IonSelectOption>
+              {
+               months &&  months.map((data:any, index:number)=>(
+                  <IonSelectOption value={data.month} key={index}>{data.month}</IonSelectOption>
+                ))
+              }
               </IonSelect>
             </IonCol>
           </IonRow>
