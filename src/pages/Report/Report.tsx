@@ -47,7 +47,7 @@ const Report = (props: Props) => {
               Year :
             </IonCol>
             <IonCol className="right-col">
-              <IonSelect fill="outline" placeholder="select year" onIonChange={(e)=>handleMonthFilter(e)}>
+              <IonSelect fill="outline" placeholder="select year" onIonChange={(e)=>handleMonthFilter(e)} interfaceOptions="{cssClass: 'my-class'}">
                 {
                   year.map((data, index)=>(
                     <IonSelectOption key={index} value={data.year}>{data.year}</IonSelectOption>
@@ -64,7 +64,7 @@ const Report = (props: Props) => {
               Month :
             </IonCol>
             <IonCol className="right-col">
-            <IonSelect fill="outline" placeholder="select Month">
+            <IonSelect fill="outline" placeholder="select Month" >
               {
                months &&  months.map((data:any, index:number)=>(
                   <IonSelectOption value={data.month} key={index}>{data.month}</IonSelectOption>
