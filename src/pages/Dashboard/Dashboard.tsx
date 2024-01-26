@@ -31,7 +31,7 @@ export default function Dashboard({}: Props) {
   };
 
   return (
-    <IonContent className="dash-board">
+    <IonContent>
       <div className="dashboard-container">
         <div className="dashboard_profile">
           <Profile />

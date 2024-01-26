@@ -1,9 +1,4 @@
-
-.dash-board {
-    background:  var(--bg-color);
-}
 .dashboard-container {
-    height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
@@ -21,18 +16,21 @@
     justify-content: flex-end;
 }
 
-.students_count, .absentees {
+.students_count,
+.absentees {
     width: 90%;
     height: fit-content;
-    background-color: rgba(248, 212, 152, 0.71);    ;
+    background-color: rgba(248, 212, 152, 0.71);
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 0 15px #00000040;
 }
+
 .absentees {
     background-color: rgba(240, 248, 152, 0.71);
     padding: 0 20px;
 }
+
 .absentees h3 {
     text-align: center;
 }
@@ -49,9 +47,11 @@
     color: green;
     font-weight: 600;
 }
+
 .students_count_table tr {
     border-bottom: 1px solid #0000000f;
 }
+
 .students_count_table tr:last-child {
     border-bottom: none;
 }
@@ -62,6 +62,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
 .feature div {
     background-color: #02CCC0;
     width: 48%;
@@ -74,6 +75,7 @@
     align-items: center;
     padding-top: 15px;
 }
+
 .feature p {
     margin: 10px 0;
     font-size: 16px;
@@ -81,6 +83,6 @@
     text-align: center;
 }
 
-.li-class{
+.li-class {
     margin: 0 0 10px 0;
 }

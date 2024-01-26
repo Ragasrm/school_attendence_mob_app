@@ -3,6 +3,7 @@ import { IonApp, setupIonicReact } from "@ionic/react";
 import React, { useEffect } from "react";
 import { Plugins, Capacitor } from "@capacitor/core";
 import { Network } from "@capacitor/network";
+import { useHistory } from "react-router-dom";
 
 import Login from "./pages/Login/Login";
 // import Login from './pages/newLogin/Login1';
@@ -48,7 +49,7 @@ function handleBackButton() {
 
   switch (currentPath) {
     case "/dashboard":
-      handleUserAction("Are you sure to logout?", () => history.back());
+      handleUserAction("Are you sure to logout?", () => window.location.replace('/login'));
       break;
     case "/login":
       handleUserAction("Are you sure to close the app", () =>

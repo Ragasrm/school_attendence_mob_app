@@ -24,40 +24,35 @@ type ScanedContent = {
   hasContent: boolean;
 };
 
-function attendence({}: Props) {
-
-    // hooks
-    const history = useHistory();
+function Attendence() {
+  // hooks
+  const history = useHistory();
 
   const [err, setErr] = useState<string>();
   const [hideBtn, setHideBtn] = useState(false);
-  const [scanedContent, setScanedContent] = useState<ScanedContent | null>(null);
+  const [scanedContent, setScanedContent] = useState<ScanedContent | null>(
+    null
+  );
   const [title, setTitle] = useState<string>("Scan QR code");
-  const [exit, setExit] = useState<boolean>(true)
 
 
-  // {
-  //   content: '{"name":"Ragav","id":22}',
-  //   format: "QR_CODE",
-  //   hasContent: true,
-  // }
+  const stopScan = (exit?: boolean) => {
+    if (exit) {
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
+      history.push("/dashboard");
+    } else {
+      BarcodeScanner.showBackground();
+      BarcodeScanner.stopScan();
 
-  const stopScan = () => {
-    console.log("***************");
-    BarcodeScanner.showBackground();
-    BarcodeScanner.stopScan();
-    setHideBtn(false);
-    // setTitle("Scanned Details");
-
-
-    // push to DASHBOARD if closing it completely
-    //history.push(`/dashboard`);
+    }
   };
 
   const startScan = async () => {
-    
-    console.log("scan")
-    setTitle(title);
+    console.log("scan start");
+
+    // content will be set null every time while start scanning
+    setTitle("Scan QR")
     setScanedContent(null);
     // Check camera permission
     // This is just a simple example, check out the better checks below
@@ -68,7 +63,6 @@ function attendence({}: Props) {
     // make background of WebView transparent
     // note: if you are using ionic this might not be enough, check below
     BarcodeScanner.hideBackground();
-    setHideBtn(true);
 
     const result = await BarcodeScanner.startScan(); // start scanning and wait for a result
 
@@ -77,7 +71,8 @@ function attendence({}: Props) {
       console.log(result); // log the raw scanned content
 
       setScanedContent(result);
-      setExit(false)
+      setTitle("Scanned Content")
+
 
       document.querySelector("body")?.classList.remove("scanner-active");
       stopScan();
@@ -89,19 +84,15 @@ function attendence({}: Props) {
     // submit data to API
     // redirect to scan
     setScanedContent(null);
-    setTitle(title);
+    setTitle("Scan QR code")
     startScan();
-    setExit(true)
-
-  }
+  };
 
   useEffect(() => {
     const checkPermission = async () => {
       try {
         // check or request permission
         const status = await BarcodeScanner.checkPermission({ force: true });
-        console.log("status", status);
-
         if (status.granted) {
           // the user granted permission
           return true;
@@ -109,7 +100,6 @@ function attendence({}: Props) {
 
         return false;
       } catch (error: any) {
-        console.log("err", error);
         setErr(error?.message);
       }
     };
@@ -118,36 +108,40 @@ function attendence({}: Props) {
     return () => {};
   }, []);
 
-  let a = scanedContent?.content;
-
- console.log("---->",exit);
-
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar className="ion-tool-bar">
           <IonTitle>{title}</IonTitle>
           <IonButtons slot="end">
-            {(hideBtn || scanedContent?.content) && (
-              <IonButton onClick={ ()=> exit ?  history.push(`/dashboard`) : startScan()} color={"danger"}>
-                <Close />
-              </IonButton>
-            )}
+            {/* functionlity will change based on some condition */}
+            <IonButton
+              onClick={() =>
+                scanedContent?.content ? startScan() : stopScan(true)
+              }
+              color={"danger"}
+            >
+              <Close />
+            </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-     {<IonContent
-        className={scanedContent?.content ? "scan-bg hideBg" : "hideBg"}
-      >
-        {/* {!hideBtn && <IonButton onClick={startScan}>Start Scan</IonButton>} */}
-        {!hideBtn && <div className="scanned-content">
-          <div> { "scanedContent?.content"}</div>
-          <div><IonButton onClick={handleSubmitAttendence}>Submit</IonButton></div>
-         
-          </div>}
-      </IonContent>}
+      {
+        <IonContent
+          className={scanedContent?.content ? "scan-bg hideBg" : "hideBg"}
+        >
+          {scanedContent?.content && (
+            <div className="scanned-content">
+              <div> {JSON.parse(scanedContent?.content).Name}</div>
+              <div>
+                <IonButton onClick={handleSubmitAttendence}>Submit</IonButton>
+              </div>
+            </div>
+          )}
+        </IonContent>
+      }
     </IonPage>
   );
 }
 
-export default attendence;
+export default Attendence;
