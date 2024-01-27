@@ -54,3 +54,7 @@
     justify-content: center;
     margin-top: 50px;
 }
+
+.alert-wrapper.sc-ion-alert-md{
+    background: black;
+}

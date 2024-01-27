@@ -53,9 +53,6 @@ const Report = (props: Props) => {
                     <IonSelectOption key={index} value={data.year}>{data.year}</IonSelectOption>
                   ))
                 }
-               
-                {/* <IonSelectOption value="banana">2021</IonSelectOption>
-                <IonSelectOption value="orange">2022</IonSelectOption> */}
               </IonSelect>
             </IonCol>
           </IonRow>

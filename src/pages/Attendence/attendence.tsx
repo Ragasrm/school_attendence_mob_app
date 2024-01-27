@@ -29,12 +29,12 @@ function Attendence() {
   const history = useHistory();
 
   const [err, setErr] = useState<string>();
-  const [hideBtn, setHideBtn] = useState(false);
-  const [scanedContent, setScanedContent] = useState<ScanedContent | null>(
-    null
-  );
+  const [scanedContent, setScanedContent] = useState<ScanedContent | null>({
+    hasContent: true,
+    content: '{"name":"Ragavendiran"}',
+    format: "QR_CODE",
+  });
   const [title, setTitle] = useState<string>("Scan QR code");
-
 
   const stopScan = (exit?: boolean) => {
     if (exit) {
@@ -44,7 +44,6 @@ function Attendence() {
     } else {
       BarcodeScanner.showBackground();
       BarcodeScanner.stopScan();
-
     }
   };
 
@@ -52,7 +51,7 @@ function Attendence() {
     console.log("scan start");
 
     // content will be set null every time while start scanning
-    setTitle("Scan QR")
+    setTitle("Scan QR");
     setScanedContent(null);
     // Check camera permission
     // This is just a simple example, check out the better checks below
@@ -71,8 +70,7 @@ function Attendence() {
       console.log(result); // log the raw scanned content
 
       setScanedContent(result);
-      setTitle("Scanned Content")
-
+      setTitle("Scanned Content");
 
       document.querySelector("body")?.classList.remove("scanner-active");
       stopScan();
@@ -84,7 +82,7 @@ function Attendence() {
     // submit data to API
     // redirect to scan
     setScanedContent(null);
-    setTitle("Scan QR code")
+    setTitle("Scan QR code");
     startScan();
   };
 
@@ -108,6 +106,8 @@ function Attendence() {
     return () => {};
   }, []);
 
+  console.log("scanedContent", scanedContent);
+
   return (
     <IonPage>
       <IonHeader>
@@ -130,13 +130,16 @@ function Attendence() {
         <IonContent
           className={scanedContent?.content ? "scan-bg hideBg" : "hideBg"}
         >
-          {scanedContent?.content && (
+          {scanedContent?.content ? (
             <div className="scanned-content">
-              <div> {JSON.parse(scanedContent?.content).Name}</div>
+              {/* <div> {JSON.parse(scanedContent?.content).name}</div> */}
+              <div>Ragavendiran</div>
               <div>
                 <IonButton onClick={handleSubmitAttendence}>Submit</IonButton>
               </div>
             </div>
+          ) : (
+            <div className="scan-box"></div>
           )}
         </IonContent>
       }
