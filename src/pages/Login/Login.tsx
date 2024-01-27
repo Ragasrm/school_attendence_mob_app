@@ -23,7 +23,11 @@ const Login: React.FC = () => {
   // hooks
   const history = useHistory();
 
-  const { register, handleSubmit, formState:{ errors, isSubmitting} } = useForm<FormField>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormField>();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [present, dismiss] = useIonLoading();
@@ -44,15 +48,14 @@ const Login: React.FC = () => {
   };
 
   const Sumbit: SubmitHandler<FormField> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 7000));
 
-    await new Promise((resolve)=>setTimeout(resolve, 7000))
-    
     present({
       message: "Verifying user...!",
     });
 
     const body = {
-     ...data
+      ...data,
     };
 
     /**
@@ -94,23 +97,39 @@ const Login: React.FC = () => {
               {/* <input  className="input-field"  {...register("useName")}/> */}
               <Input
                 title="User Name"
-                register={{...register("useName", { required: "Username is Required", validate:(value)=> { 
-                  if(!value.includes("@")) {
-                    return "Invalid User name"
-                  }
-                  return true}})}}
+                register={{
+                  ...register("useName", {
+                    required: "Username is Required",
+                    validate: (value) => {
+                      if (
+                        !value.match(
+                          "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$"
+                        )
+                      ) {
+                        return "Invalid User name";
+                      }
+                      return true;
+                    },
+                  }),
+                }}
               >
                 <UserIcon />
               </Input>
-              {errors.useName && (<div style={{color:'red'}}>{errors.useName.message}</div>)}
+              {errors.useName && (
+                <div style={{ color: "red" }}>{errors.useName.message}</div>
+              )}
               <Input
                 title="Password"
                 type="Password"
-                register={{...register("password", { required: "password is Required"})}}
+                register={{
+                  ...register("password", { required: "password is Required" }),
+                }}
               >
                 <LockIcon />
               </Input>
-              {errors.password && (<div style={{color:'red'}}>{errors.password.message}</div>)}
+              {errors.password && (
+                <div style={{ color: "red" }}>{errors.password.message}</div>
+              )}
             </div>
             <div className="login_btn_container">
               <button
