@@ -66,6 +66,7 @@ function handleUserAction(message: string, callback: UserActionCallback) {
 }
 
 const App: React.FC = () => {
+  useNetworkCheckhook();
   // const { netWorkStatus } = useNetworkCheckhook();
 
   // console.log("netWorkStatus", netWorkStatus);

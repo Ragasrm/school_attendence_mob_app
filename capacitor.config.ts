@@ -4,9 +4,6 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'attendence',
   webDir: 'dist',
-  server: {
-    androidScheme: 'https',
-  }
 };
 
 export default config;

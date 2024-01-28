@@ -1,47 +1,29 @@
 import { Network } from "@capacitor/network";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function useNetworkCheckhook() {
-  const [netWorkStatus, setNetWorkStatus] = useState({});
+  const history = useHistory();
+  // const [netWorkStatus, setNetWorkStatus] = useState({});
 
-  const logCurrentNetworkStatus = async () => {
+  const logCurrentNetworkStatus = async (_history:any) => {
     const status = await Network.getStatus();
     console.log('Network status:', status);
-    setNetWorkStatus(status);
+    console.log('connected status:', status.connected);
+
+
+    if(!status.connected){
+      console.log("try logout")
+      _history.push("/login")
+    }
+    // setNetWorkStatus(status);
   };
-
-//   const checkInternetConnection = async () => {
-//     try {
-//       // Make a request to Google (replace with an appropriate URL)
-//       const response = await fetch('https://www.google.com', {
-//         method: 'GET',
-//         mode: 'no-cors', // This is important for a simple HEAD request to check for internet connectivity
-//       });
-
-//       console.log("response", response)
-
-//       if (response.ok) {
-//         // Internet connection is available
-//         console.log('Internet is available');
-//         logCurrentNetworkStatus();
-//       } else {
-//         // Internet connection is not available
-//         console.log('Internet is not available');
-//         setNetWorkStatus({ connected: false });
-//       }
-//     } catch (error) {
-//       // An error occurred, handle as needed
-//       console.error('Error checking internet connection:', error);
-//     }
-//   };
-
   useEffect(() => {
-    console.log("useNetworkCheckhook")
     // Check internet connection when the component mounts
     // checkInternetConnection();
 
     // Add network status change listener
-    const networkStatusListener = Network.addListener('networkStatusChange', logCurrentNetworkStatus);
+    const networkStatusListener = Network.addListener('networkStatusChange', ()=>logCurrentNetworkStatus(history));
 
     // Cleanup the listener when the component unmounts
     return () => {
@@ -49,10 +31,10 @@ function useNetworkCheckhook() {
     };
   }, []); // Empty dependency array to run the effect only once during mount
 
-  return {
-    netWorkStatus,
-    // checkInternetConnection,
-  };
+  // return {
+  //   netWorkStatus,
+  //   // checkInternetConnection,
+  // };
 }
 
 export default useNetworkCheckhook;

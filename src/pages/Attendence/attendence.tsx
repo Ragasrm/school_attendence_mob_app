@@ -132,8 +132,7 @@ function Attendence() {
         >
           {scanedContent?.content ? (
             <div className="scanned-content">
-              {/* <div> {JSON.parse(scanedContent?.content).name}</div> */}
-              <div>Ragavendiran</div>
+              <div> {JSON.parse(scanedContent?.content).name}</div>
               <div>
                 <IonButton onClick={handleSubmitAttendence}>Submit</IonButton>
               </div>
