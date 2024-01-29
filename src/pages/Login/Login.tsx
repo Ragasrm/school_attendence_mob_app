@@ -48,11 +48,12 @@ const Login: React.FC = () => {
   };
 
   const Sumbit: SubmitHandler<FormField> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 7000));
-
     present({
       message: "Verifying user...!",
     });
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
+  
 
     const body = {
       ...data,

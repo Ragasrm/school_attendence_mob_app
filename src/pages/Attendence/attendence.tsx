@@ -29,12 +29,9 @@ function Attendence() {
   const history = useHistory();
 
   const [err, setErr] = useState<string>();
-  const [scanedContent, setScanedContent] = useState<ScanedContent | null>({
-    hasContent: true,
-    content: '{"name":"Ragavendiran"}',
-    format: "QR_CODE",
-  });
+  const [scanedContent, setScanedContent] = useState<ScanedContent | null>();
   const [title, setTitle] = useState<string>("Scan QR code");
+  const [camPermission, setCamPermission] = useState<string>("")
 
   const stopScan = (exit?: boolean) => {
     if (exit) {
@@ -55,7 +52,8 @@ function Attendence() {
     setScanedContent(null);
     // Check camera permission
     // This is just a simple example, check out the better checks below
-    await BarcodeScanner.checkPermission({ force: true });
+    const permission = await BarcodeScanner.checkPermission({ force: true });
+    console.log("startScan", permission)
 
     document.querySelector("body")?.classList.add("scanner-active");
 
@@ -86,6 +84,14 @@ function Attendence() {
     startScan();
   };
 
+  // const checkCameraPermission = async() => {
+  //       // Check camera permission
+  //   // This is just a simple example, check out the better checks below
+  //   const permission = await BarcodeScanner.checkPermission({ force: true });
+  //   console.log("permission", permission)
+  //   return permission
+  // }
+
   useEffect(() => {
     const checkPermission = async () => {
       try {
@@ -101,10 +107,17 @@ function Attendence() {
         setErr(error?.message);
       }
     };
-    checkPermission();
-    startScan();
+     checkPermission().then((data)=> {
+      console.log(data, "12345676543")
+      if(data) {
+        startScan()
+      }
+     }).catch()
+      
+
+    // startScan();
     return () => {};
-  }, []);
+  }, [camPermission]);
 
   console.log("scanedContent", scanedContent);
 
@@ -137,9 +150,22 @@ function Attendence() {
                 <IonButton onClick={handleSubmitAttendence}>Submit</IonButton>
               </div>
             </div>
-          ) : (
+          ) :
+
+          <>
+          {camPermission ==="askAgain" ?   (
+            <div><a onClick={()=>setCamPermission("askAgain")}>Click here</a> to give permission to camera</div>
+          ):(
             <div className="scan-box"></div>
+
           )}
+          </>
+          
+        
+          
+          
+          
+          }
         </IonContent>
       }
     </IonPage>
