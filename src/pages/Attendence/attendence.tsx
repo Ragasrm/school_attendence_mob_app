@@ -146,8 +146,8 @@ function Attendence() {
             // <div className="scan-box"></div>
             <div className="attendence-container"> 
                 <h2 style={{marginBottom: 40}}>Exit Attendance?</h2>
-                <IonButton size="large" color="success">Yes</IonButton>
-                <IonButton size="large" color="danger">No</IonButton>
+                <IonButton size="large" color="success" className="btn">Yes</IonButton>
+                <IonButton size="large" color="danger" className="btn">No</IonButton>
             </div>
           )}
         </IonContent>

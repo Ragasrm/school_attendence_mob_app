@@ -51,11 +51,13 @@
     padding: 20px;
     height: 100%;
 }
-
+.btn {
+    width: 168px;
+}
 .ion-color-success, .ion-color-danger {
     --ion-color-contrast: white !important;
     --border-radius: 20px !important;
-    width: 168px;
+    /* width: 168px; */
 }
 .ion-color-success { --ion-color-base: #0A7115 !important; }
 .ion-color-danger { --ion-color-base: #FF0F00 !important; }
