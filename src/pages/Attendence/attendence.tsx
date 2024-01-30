@@ -31,7 +31,7 @@ function Attendence() {
   const [err, setErr] = useState<string>();
   const [scanedContent, setScanedContent] = useState<ScanedContent | null>();
   const [title, setTitle] = useState<string>("Scan QR code");
-  const [camPermission, setCamPermission] = useState<string>("")
+  const [exitScreen, setExitScreen] = useState(true)
 
   const stopScan = (exit?: boolean) => {
     if (exit) {
@@ -45,15 +45,13 @@ function Attendence() {
   };
 
   const startScan = async () => {
-    console.log("scan start");
 
     // content will be set null every time while start scanning
     setTitle("Scan QR");
     setScanedContent(null);
     // Check camera permission
     // This is just a simple example, check out the better checks below
-    const permission = await BarcodeScanner.checkPermission({ force: true });
-    console.log("startScan", permission)
+    await BarcodeScanner.checkPermission({ force: true });
 
     document.querySelector("body")?.classList.add("scanner-active");
 
@@ -84,13 +82,6 @@ function Attendence() {
     startScan();
   };
 
-  // const checkCameraPermission = async() => {
-  //       // Check camera permission
-  //   // This is just a simple example, check out the better checks below
-  //   const permission = await BarcodeScanner.checkPermission({ force: true });
-  //   console.log("permission", permission)
-  //   return permission
-  // }
 
   useEffect(() => {
     const checkPermission = async () => {
@@ -107,17 +98,18 @@ function Attendence() {
         setErr(error?.message);
       }
     };
-     checkPermission().then((data)=> {
-      console.log(data, "12345676543")
-      if(data) {
-        startScan()
-      }
-     }).catch()
-      
+    checkPermission()
+      .then((data) => {
+        console.log(data, "12345676543");
+        if (data) {
+          //startScan();
+        }
+      })
+      .catch();
 
     // startScan();
     return () => {};
-  }, [camPermission]);
+  }, []);
 
   console.log("scanedContent", scanedContent);
 
@@ -150,22 +142,10 @@ function Attendence() {
                 <IonButton onClick={handleSubmitAttendence}>Submit</IonButton>
               </div>
             </div>
-          ) :
-
-          <>
-          {camPermission ==="askAgain" ?   (
-            <div><a onClick={()=>setCamPermission("askAgain")}>Click here</a> to give permission to camera</div>
-          ):(
-            <div className="scan-box"></div>
-
+          ) : (
+            // <div className="scan-box"></div>
+            <div> Raga vSS</div>
           )}
-          </>
-          
-        
-          
-          
-          
-          }
         </IonContent>
       }
     </IonPage>
