@@ -39,3 +39,23 @@
     width: 300px;
     transform: translate(-50%, -50%);
 }
+
+.attendence-container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+    padding: 20px;
+    height: 100%;
+}
+
+.ion-color-success, .ion-color-danger {
+    --ion-color-contrast: white !important;
+    --border-radius: 20px !important;
+    width: 168px;
+}
+.ion-color-success { --ion-color-base: #0A7115 !important; }
+.ion-color-danger { --ion-color-base: #FF0F00 !important; }

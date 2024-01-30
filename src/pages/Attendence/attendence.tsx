@@ -144,7 +144,11 @@ function Attendence() {
             </div>
           ) : (
             // <div className="scan-box"></div>
-            <div> Raga vSS</div>
+            <div className="attendence-container"> 
+                <h2 style={{marginBottom: 40}}>Exit Attendance?</h2>
+                <IonButton size="large" color="success">Yes</IonButton>
+                <IonButton size="large" color="danger">No</IonButton>
+            </div>
           )}
         </IonContent>
       }
